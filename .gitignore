@@ -1,0 +1,32 @@
+# Dependencies (reinstall with `npm install`)
+node_modules/
+
+# Build output (recreate with `npm run build`)
+dist/
+build/
+.vite/
+coverage/
+
+# Environment files: never commit secrets. Commit a `.env.example` instead.
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editors and operating systems
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local AI tool settings
+.claude/
+
+# Local planning material (third-party reference screenshots), kept off GitHub
+planing/
