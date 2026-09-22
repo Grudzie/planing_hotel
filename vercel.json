@@ -1,8 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": null,
-  "installCommand": "npm ci --prefix hotel-website",
-  "buildCommand": "npm run build --prefix hotel-website",
-  "outputDirectory": "hotel-website/dist",
+  "framework": "vite",
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
