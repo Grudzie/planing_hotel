@@ -3,6 +3,11 @@
 const photo = (id, width = 1200) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${width}&q=75`
 
+// Same photo at several widths, so the browser downloads only what the viewport needs.
+const photoSet = (id, widths) => widths.map(width => `${photo(id, width)} ${width}w`).join(', ')
+
+const HERO_ID = '1542314831-068cd1dbfeeb'
+
 export const TAX_RATE = 0.08
 
 export const hotel = {
@@ -20,7 +25,8 @@ export const hotel = {
 }
 
 export const images = {
-  hero: photo('1566073771259-6a8506099945', 2000),
+  hero: photo(HERO_ID, 2000),
+  heroSrcSet: photoSet(HERO_ID, [768, 1200, 1600, 2000, 2560]),
   building: photo('1455587734955-081b22074882', 1000),
   restaurant: photo('1414235077428-338989a2e8c0', 700),
 }

@@ -25,9 +25,17 @@ export default function Hero({ booking, onSearch }) {
 
   return (
     <section id="top" aria-labelledby="hero-title" className="relative isolate overflow-hidden bg-navy">
-      <img src={images.hero} alt="" fetchPriority="high" className="absolute inset-0 -z-10 size-full object-cover" />
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-r from-navy/85 via-navy/50 to-navy/10" />
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-t from-navy/80 via-transparent to-navy/30" />
+      <img
+        src={images.hero}
+        srcSet={images.heroSrcSet}
+        sizes="100vw"
+        alt=""
+        fetchPriority="high"
+        decoding="async"
+        className="absolute inset-0 -z-10 size-full object-cover object-center"
+      />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-r from-navy/85 via-navy/55 to-navy/20" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-t from-navy/85 via-transparent to-navy/40" />
 
       <Container className="on-dark pt-20 pb-10 sm:pt-28 lg:pt-36">
         <p className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3.5 py-1.5 text-sm font-medium text-white backdrop-blur-sm">
