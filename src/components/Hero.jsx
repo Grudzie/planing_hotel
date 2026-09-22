@@ -1,19 +1,14 @@
 import { useEffect, useState } from 'react'
 import { hotel, ratingLabel } from '../data/hotel'
 import { addDays, plural, today } from '../lib/format'
-import HeroVideo from './HeroVideo'
+import HeroFeatures from './HeroFeatures'
+import HeroVideo, { useHeroMotion } from './HeroVideo'
 import { Icon } from './Icons'
 import { Container } from './ui'
 
-const perks = [
-  'Free cancellation up to 48 h',
-  'Breakfast included',
-  '200 m from the beach',
-  'Best price when you book direct',
-]
-
 export default function Hero({ booking, onSearch }) {
   const [draft, setDraft] = useState(booking)
+  const motion = useHeroMotion()
 
   useEffect(() => setDraft(booking), [booking])
 
@@ -35,7 +30,13 @@ export default function Hero({ booking, onSearch }) {
       aria-labelledby="hero-title"
       className="relative isolate flex min-h-[46rem] flex-col justify-end overflow-hidden bg-navy lg:min-h-[92svh]"
     >
-      <HeroVideo />
+      <HeroVideo enabled={motion.enabled} paused={motion.paused} />
+      {motion.enabled && (
+        <button type="button" onClick={motion.toggle} aria-pressed={motion.paused} className="hero-motion-toggle">
+          <Icon name={motion.running ? 'pause' : 'play'} className="size-3.5" />
+          {motion.running ? 'Pause motion' : 'Play motion'}
+        </button>
+      )}
       {/* Three stacked scrims: side wash for the text column, floor for the search card, vignette for the edges. */}
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-r from-navy/90 via-navy/55 to-navy/15" />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-t from-navy via-navy/30 to-navy/45" />
@@ -118,14 +119,9 @@ export default function Hero({ booking, onSearch }) {
           </button>
         </form>
 
-        <ul className="hero-proof mt-5">
-          {perks.map(perk => (
-            <li key={perk}>
-              <Icon name="check" className="size-4 text-amber" />
-              {perk}
-            </li>
-          ))}
-        </ul>
+        <div className="mt-5">
+          <HeroFeatures enabled={motion.enabled} running={motion.running} />
+        </div>
       </Container>
     </section>
   )

@@ -22,7 +22,7 @@ export const hotel = {
 export const images = {
   building: photo('1455587734955-081b22074882', 1000),
   restaurant: photo('1414235077428-338989a2e8c0', 700),
-  terrace: photo('1584132967334-10e028bd69f7', 1000),
+  poolLounge: photo('1529290130-4ca3753253ae', 1000),
 }
 
 // Hero background clip, self-hosted from public/media (Mixkit free licence, no attribution needed).
@@ -32,6 +32,16 @@ export const heroVideo = {
   srcSmall: '/media/hero-sea-small.mp4',
   poster: '/media/hero-sea-poster.jpg',
 }
+
+// Selling points under the hero search bar. They rotate one by one while the
+// hero clip plays, and are shown as a plain row when motion is switched off.
+export const heroFeatures = [
+  { icon: 'tag', text: 'Book direct and pay the lowest price, guaranteed' },
+  { icon: 'calendarCheck', text: 'Free cancellation up to 48 hours before arrival' },
+  { icon: 'check', text: 'Instant confirmation, no booking fee' },
+  { icon: 'coffee', text: 'Breakfast for two included in every direct rate' },
+  { icon: 'waves', text: 'Sea-view rooms, 200 m from the Baltic beach' },
+]
 
 export function ratingLabel(score) {
   if (score >= 9.4) return 'Exceptional'

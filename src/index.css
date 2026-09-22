@@ -321,4 +321,35 @@
     align-items: center;
     gap: 0.5rem;
   }
+
+  /* Same claims, shown one at a time while the hero clip runs. Every item stays
+     in the flow-free stack, so the strip keeps one height and never reflows. */
+  .hero-features {
+    position: relative;
+    min-height: 3rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: rgb(255 255 255 / 0.92);
+  }
+  .hero-features > li {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: opacity 600ms ease, transform 600ms ease;
+  }
+  .hero-features > li > svg {
+    flex-shrink: 0;
+  }
+  .hero-features > li.is-hidden {
+    opacity: 0;
+    transform: translateY(0.5rem);
+    pointer-events: none;
+  }
+  @media (min-width: 640px) {
+    .hero-features {
+      min-height: 1.75rem;
+    }
+  }
 }

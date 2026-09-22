@@ -9,8 +9,8 @@ export default function BookDirect() {
         <div className="relative">
           <div className="aspect-4/5 overflow-hidden rounded-card bg-sand">
             <img
-              src={images.terrace}
-              alt="Sun loungers on the hotel terrace looking out over the sea"
+              src={images.poolLounge}
+              alt="The heated indoor pool with lounge seating beside the window"
               loading="lazy"
               className="size-full object-cover"
             />
