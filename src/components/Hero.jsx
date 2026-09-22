@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import { hotel, images, ratingLabel } from '../data/hotel'
+import { hotel, ratingLabel } from '../data/hotel'
 import { addDays, plural, today } from '../lib/format'
+import HeroVideo from './HeroVideo'
 import { Icon } from './Icons'
 import { Container } from './ui'
 
@@ -34,17 +35,7 @@ export default function Hero({ booking, onSearch }) {
       aria-labelledby="hero-title"
       className="relative isolate flex min-h-[46rem] flex-col justify-end overflow-hidden bg-navy lg:min-h-[92svh]"
     >
-      <div aria-hidden="true" className="absolute inset-0 -z-10 overflow-hidden">
-        <img
-          src={images.hero}
-          srcSet={images.heroSrcSet}
-          sizes="100vw"
-          alt=""
-          fetchPriority="high"
-          decoding="async"
-          className="hero-photo size-full object-cover object-center"
-        />
-      </div>
+      <HeroVideo />
       {/* Three stacked scrims: side wash for the text column, floor for the search card, vignette for the edges. */}
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-r from-navy/90 via-navy/55 to-navy/15" />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-t from-navy via-navy/30 to-navy/45" />

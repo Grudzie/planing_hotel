@@ -3,11 +3,6 @@
 const photo = (id, width = 1200) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${width}&q=75`
 
-// Same photo at several widths, so the browser downloads only what the viewport needs.
-const photoSet = (id, widths) => widths.map(width => `${photo(id, width)} ${width}w`).join(', ')
-
-const HERO_ID = '1542314831-068cd1dbfeeb'
-
 export const TAX_RATE = 0.08
 
 export const hotel = {
@@ -25,10 +20,17 @@ export const hotel = {
 }
 
 export const images = {
-  hero: photo(HERO_ID, 2000),
-  heroSrcSet: photoSet(HERO_ID, [768, 1200, 1600, 2000, 2560]),
   building: photo('1455587734955-081b22074882', 1000),
   restaurant: photo('1414235077428-338989a2e8c0', 700),
+  terrace: photo('1584132967334-10e028bd69f7', 1000),
+}
+
+// Hero background clip, self-hosted from public/media (Mixkit free licence, no attribution needed).
+// The small cut is served to phones; the poster is the clip's own first frame.
+export const heroVideo = {
+  src: '/media/hero-sea.mp4',
+  srcSmall: '/media/hero-sea-small.mp4',
+  poster: '/media/hero-sea-poster.jpg',
 }
 
 export function ratingLabel(score) {
@@ -39,27 +41,26 @@ export function ratingLabel(score) {
   return 'Good'
 }
 
-export const highlights = [
+export const directBenefits = [
   {
     icon: 'tag',
-    title: 'Best price, booked direct',
-    text: 'Lower rates than on booking sites, guaranteed.',
-    href: '#reservation',
-    linkLabel: 'Book now',
+    title: 'Best rate, guaranteed',
+    text: 'Find a lower price elsewhere and we match it, then take another 5% off.',
   },
   {
     icon: 'calendarCheck',
-    title: 'Plans change? No problem.',
-    text: 'Free cancellation up to 48 hours before arrival.',
-    href: '#rooms',
-    linkLabel: 'View rooms',
+    title: 'Free cancellation',
+    text: 'Change or cancel up to 48 hours before arrival, at no cost.',
   },
   {
     icon: 'coffee',
-    title: 'Breakfast is on us',
-    text: 'Every direct booking includes our breakfast buffet.',
-    href: '#amenities',
-    linkLabel: 'See amenities',
+    title: 'Breakfast included',
+    text: 'Baltic bakery bread, local cheese and eggs to order, served until 11:00.',
+  },
+  {
+    icon: 'clock',
+    title: 'Late check-out on request',
+    text: 'Stay until 14:00 whenever the house allows it. Just ask at reception.',
   },
 ]
 

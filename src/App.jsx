@@ -4,7 +4,7 @@ import Amenities from './components/Amenities'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import Hero from './components/Hero'
-import Highlights from './components/Highlights'
+import BookDirect from './components/BookDirect'
 import Location from './components/Location'
 import Offers from './components/Offers'
 import Reservation from './components/Reservation'
@@ -52,7 +52,7 @@ export default function App() {
       <Header />
       <main id="main" tabIndex={-1} className="outline-none">
         <Hero booking={booking} onSearch={handleSearch} />
-        <Highlights />
+        <BookDirect />
         <About />
         <Rooms booking={booking} onReserve={handleReserve} onDetails={setDetailsRoom} />
         <Offers onChoose={handleChoosePackage} />
