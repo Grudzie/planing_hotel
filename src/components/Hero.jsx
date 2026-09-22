@@ -37,10 +37,9 @@ export default function Hero({ booking, onSearch }) {
           {motion.running ? 'Pause motion' : 'Play motion'}
         </button>
       )}
-      {/* Three stacked scrims: side wash for the text column, floor for the search card, vignette for the edges. */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-r from-navy/90 via-navy/55 to-navy/15" />
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-t from-navy via-navy/30 to-navy/45" />
-      <div aria-hidden="true" className="hero-vignette absolute inset-0 -z-10" />
+      {/* One flat tint, no gradient: the picture keeps its own light, and white
+          type clears 4.5:1 even over the brightest frames of the clip. */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-navy/30" />
 
       <Container className="on-dark flex flex-1 flex-col justify-end pt-28 pb-8 sm:pt-32 lg:pt-40">
         <p className="hero-kicker">Sopot · Baltic coast</p>

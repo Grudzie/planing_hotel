@@ -283,11 +283,6 @@
     }
   }
 
-  /* Corner vignette: keeps the picture edges dark so white type stays readable. */
-  .hero-vignette {
-    background: radial-gradient(120% 90% at 50% 40%, transparent 35%, rgb(10 16 61 / 0.55) 100%);
-  }
-
   /* Small caps label above the headline */
   .hero-kicker {
     display: inline-flex;
