@@ -224,3 +224,63 @@
     box-shadow: none;
   }
 }
+
+/* ---------- Hero (editorial treatment) ---------- */
+@layer components {
+  /* Slow push-in on the hero photo: adds depth without moving the layout. */
+  .hero-photo {
+    transform: scale(1.06);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-photo {
+      animation: hero-push-in 22s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    }
+  }
+  @keyframes hero-push-in {
+    from {
+      transform: scale(1.12);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  /* Corner vignette: keeps the photo edges dark so white type stays readable. */
+  .hero-vignette {
+    background: radial-gradient(120% 90% at 50% 40%, transparent 35%, rgb(10 16 61 / 0.55) 100%);
+  }
+
+  /* Small caps label above the headline */
+  .hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.875rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgb(255 255 255 / 0.85);
+  }
+  .hero-kicker::before {
+    content: "";
+    width: 2.5rem;
+    height: 1px;
+    background: var(--color-amber);
+  }
+
+  /* Trust items under the search bar, separated by amber dots */
+  .hero-proof {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgb(255 255 255 / 0.92);
+  }
+  .hero-proof > li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}

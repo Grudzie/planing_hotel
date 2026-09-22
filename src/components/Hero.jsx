@@ -4,7 +4,12 @@ import { addDays, plural, today } from '../lib/format'
 import { Icon } from './Icons'
 import { Container } from './ui'
 
-const perks = ['Free cancellation up to 48 h', 'Breakfast included', 'Best price when you book direct']
+const perks = [
+  'Free cancellation up to 48 h',
+  'Breakfast included',
+  '200 m from the beach',
+  'Best price when you book direct',
+]
 
 export default function Hero({ booking, onSearch }) {
   const [draft, setDraft] = useState(booking)
@@ -24,48 +29,61 @@ export default function Hero({ booking, onSearch }) {
   }
 
   return (
-    <section id="top" aria-labelledby="hero-title" className="relative isolate overflow-hidden bg-navy">
-      <img
-        src={images.hero}
-        srcSet={images.heroSrcSet}
-        sizes="100vw"
-        alt=""
-        fetchPriority="high"
-        decoding="async"
-        className="absolute inset-0 -z-10 size-full object-cover object-center"
-      />
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-r from-navy/85 via-navy/55 to-navy/20" />
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-t from-navy/85 via-transparent to-navy/40" />
+    <section
+      id="top"
+      aria-labelledby="hero-title"
+      className="relative isolate flex min-h-[46rem] flex-col justify-end overflow-hidden bg-navy lg:min-h-[92svh]"
+    >
+      <div aria-hidden="true" className="absolute inset-0 -z-10 overflow-hidden">
+        <img
+          src={images.hero}
+          srcSet={images.heroSrcSet}
+          sizes="100vw"
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+          className="hero-photo size-full object-cover object-center"
+        />
+      </div>
+      {/* Three stacked scrims: side wash for the text column, floor for the search card, vignette for the edges. */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-r from-navy/90 via-navy/55 to-navy/15" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-t from-navy via-navy/30 to-navy/45" />
+      <div aria-hidden="true" className="hero-vignette absolute inset-0 -z-10" />
 
-      <Container className="on-dark pt-20 pb-10 sm:pt-28 lg:pt-36">
-        <p className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3.5 py-1.5 text-sm font-medium text-white backdrop-blur-sm">
-          <Icon name="star" className="size-4 fill-amber text-amber" />
-          {hotel.rating} {ratingLabel(hotel.rating)} · {hotel.reviewCount.toLocaleString('en-GB')} guest reviews
-        </p>
+      <Container className="on-dark flex flex-1 flex-col justify-end pt-28 pb-8 sm:pt-32 lg:pt-40">
+        <p className="hero-kicker">Sopot · Baltic coast</p>
 
         <h1
           id="hero-title"
-          className="mt-6 max-w-3xl font-display text-5xl font-medium leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl"
+          className="mt-6 max-w-4xl font-display text-[3.25rem] font-normal leading-[0.98] tracking-[-0.02em] text-white sm:text-7xl lg:text-[5.5rem]"
         >
-          Welcome to {hotel.name}
+          {hotel.name}
+          <span className="mt-3 block text-2xl font-normal italic leading-snug text-white/80 sm:text-3xl lg:text-4xl">
+            a quiet retreat on the Baltic shore
+          </span>
         </h1>
-        <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/90 sm:text-xl">
-          A boutique seaside hotel in Sopot, just 200 m from the Baltic beach. Sea-view rooms, a heated pool and slow
-          breakfasts, at the best price when you book direct.
+
+        <p className="mt-7 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">
+          Twenty-four sea-view rooms, a heated pool and slow breakfasts, 200 m from the beach and the Sopot pier.
         </p>
 
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="mt-9 flex flex-wrap items-center gap-3">
           <a href="#reservation" className="btn btn-light btn-lg">
-            Book now
+            Book your stay
             <Icon name="arrowRight" className="size-5" />
           </a>
           <a href="#rooms" className="btn btn-ghost-light btn-lg">
             View rooms
           </a>
+          <p className="ml-1 inline-flex items-center gap-2 text-sm font-medium text-white/85">
+            <Icon name="star" className="size-4 fill-amber text-amber" />
+            <span className="font-semibold text-white">{hotel.rating}</span>
+            {ratingLabel(hotel.rating)} · {hotel.reviewCount.toLocaleString('en-GB')} reviews
+          </p>
         </div>
       </Container>
 
-      <Container className="pb-14 lg:pb-20">
+      <Container className="pb-12 lg:pb-16">
         <form
           onSubmit={handleSubmit}
           aria-label="Check availability"
@@ -109,9 +127,9 @@ export default function Hero({ booking, onSearch }) {
           </button>
         </form>
 
-        <ul className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-white">
+        <ul className="hero-proof mt-5">
           {perks.map(perk => (
-            <li key={perk} className="flex items-center gap-2">
+            <li key={perk}>
               <Icon name="check" className="size-4 text-amber" />
               {perk}
             </li>
